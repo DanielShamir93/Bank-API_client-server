@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const { data } = await myApi.get('http://localhost:5000/users/all');
+        const { data } = await myApi.get('users/all');
         console.log(data);
         setUsers(data);
       } catch (err) {
