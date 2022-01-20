@@ -15,10 +15,14 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/users", usersRoutes);
-// 404
-app.all("/*", (req, res) => {
-  res.status(404).send("Page not found.");
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(publicPath, 'index.html'));
 });
+// 404
+// app.all("/*", (req, res) => {
+//   res.status(404).send("Page not found.");
+// });
 
 app.listen(PORT, () => {
   console.log(`Server is running at ${PORT}`);
