@@ -1,13 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 import myApi from './api/Api';
 
 function App() {
   const [users, setUsers] = useState({});
 
+  console.log(process.env.NODE_ENV);
+
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const { data } = await myApi.get('/users/all');
+        const { data } = await myApi.get('http://localhost:5000/users/all');
+        console.log(data);
         setUsers(data);
       } catch (err) {
         console.log(err.message);
@@ -35,6 +38,8 @@ function App() {
       </div>
     </div>
   );
+
+
 }
 
 export default App;
