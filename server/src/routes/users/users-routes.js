@@ -13,9 +13,7 @@ const makeDeposit = require("./controllers/makeDeposit");
 router.route("/add").post(addUser);
 
 router.route("/all")
-  // Show details of all users
   .get(getAllUsers)
-  // Delete all users
   .delete(deleteAllUsers);
 
 // Show details of user

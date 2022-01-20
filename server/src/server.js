@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000;
 
 const publicPath = path.join(__dirname, '../..', 'client/build');
 app.use(express.static(publicPath));
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
@@ -17,6 +16,7 @@ app.use(cors());
 app.use("/users", usersRoutes);
 
 app.all('*', (req, res) => {
+  console.log("in * route")
   console.log(publicPath)
   res.sendFile(path.resolve(publicPath, 'index.html'));
 });

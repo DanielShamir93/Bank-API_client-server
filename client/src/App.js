@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import myApi from './api/Api';
+import axios from 'axios';
+// import myApi from './api/Api';
 
 function App() {
   const [users, setUsers] = useState({});
@@ -7,7 +8,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const { data } = await myApi.get('users/all');
+        const { data } = await axios.get('http://localhost:5000/users/all');
         setUsers(data);
       } catch (err) {
         console.log(err.message);
