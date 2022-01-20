@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
+  "homepage": "/users",
   "scripts": {
     "start": "node ./src/server.js",
     "server": "nodemon ./src/server.js",

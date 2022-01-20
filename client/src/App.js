@@ -9,6 +9,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       try {
+        alert('wow')
         const { data } = await myApi.get('users/all');
         console.log(data);
         setUsers(data);
