@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const DB_NAME = "Bank_API";
-const MONGOOSE_URL = `mongodb+srv://danielshamir93:4sXk3nH6OKl5tG35@danieldb.rhwdk.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+const MONGOOSE_URL = process.env.MONGODB_URL;
 
 mongoose.connect(
   // "mongodb://localhost/bank-api",
