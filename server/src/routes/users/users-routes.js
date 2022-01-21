@@ -7,14 +7,11 @@ const deleteUser = require("./controllers/deleteUser");
 const deleteAllUsers = require("./controllers/deleteAllUsers");
 const makeDeposit = require("./controllers/makeDeposit");
 
-
 // Add user
 // { cash, credit } = req.body:
 router.route("/add").post(addUser);
 
-router.route("/all")
-  .get(getAllUsers)
-  .delete(deleteAllUsers);
+router.route("/all").get(getAllUsers).delete(deleteAllUsers);
 
 // Show details of user
 router.route("/:id").get(getUser);

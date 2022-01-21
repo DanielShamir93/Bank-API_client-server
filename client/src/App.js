@@ -1,38 +1,11 @@
-import { useState, useEffect } from 'react';
-import myApi from './api/Api';
+
+import UserList from './components/usersList/UsersList.component';
 
 function App() {
-  const [users, setUsers] = useState({});
-
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const { data } = await myApi.get('/all');
-        setUsers(data);
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
-    getUsers();
-  }, []);
-
-  const renderUsers = () => {
-    return Object.keys(users).map((userId) => {
-      return (
-        <div key={userId}>
-          <h3>{`user ${userId}`}</h3>
-          <p>{`cash=${users[userId].cash}, credit=${users[userId].credit}`}</p>
-        </div>
-      );
-    });
-  }
 
   return (
     <div className="App">
-      <h1>All users</h1>
-      <div>
-        { renderUsers() }
-      </div>
+      <UserList />
     </div>
   );
 
