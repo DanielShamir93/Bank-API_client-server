@@ -1,0 +1,15 @@
+.Users-list {
+  background: pink;
+  padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+
+  .gallery {
+    display: flex;
+    flex-flow: row wrap;
+    background: gray;
+  }
+
+}

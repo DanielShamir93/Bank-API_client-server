@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import myApi from '../../api/Api';
 import User from '../user/User.component';
+import './usersList.styles.scss';
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -26,9 +27,9 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="Users-list">
       <h1>All users</h1>
-      <div>
+      <div className="gallery">
         { renderUsers() }
       </div>
     </div>
