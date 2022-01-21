@@ -9,7 +9,8 @@ export default function Navbar() {
           <span className="active item">All Users</span>
         </Link>
         <Link to="/add-user">
-          <span className="item">Add User</span> 
+          <span
+           className="item">Add User</span> 
         </Link>
         <div className="right menu">
           <div className="ui dropdown item">

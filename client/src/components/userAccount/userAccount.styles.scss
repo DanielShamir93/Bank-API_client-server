@@ -1,0 +1,54 @@
+.User-account {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid gray;
+    border-radius: 20px;
+    padding: 20px;
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 500px;
+
+      .titles {
+        line-height: 40px;
+
+        .header {
+          font-size: 50px;
+        }
+  
+        .meta {
+          font-size: 20px;
+          color: gray;
+        }
+      }
+
+      .status {
+        height: 80px;
+        font-size: 30px;
+        line-height: 40px;
+      }
+
+      .actions {
+        font-size: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200px;
+
+        &-button {
+          font-size: 25px;
+        }
+      }
+    }
+  }
+}
