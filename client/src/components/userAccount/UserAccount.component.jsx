@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsFillReplyAllFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import myApi from "../../api/Api";
 import "./userAccount.styles.scss";
 
@@ -53,9 +54,9 @@ export default function UserAccount() {
           </div>
         </div>
         <div className="ui two buttons">
-          <div className="ui basic blue button">
+          <Link to="/" className="ui basic blue button">
             <BsFillReplyAllFill style={{ fontSize: "40px" }} />
-          </div>
+          </Link>
           <div className="ui basic red button">
             <AiFillDelete style={{ fontSize: "40px" }} />
           </div>
