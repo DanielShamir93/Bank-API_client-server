@@ -1,6 +1,32 @@
 .Users-list {
   background: rgb(253, 190, 203);
   padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .search-account {
+    position: relative;
+    width: fit-content;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    
+    &-input {
+        text-align: center;
+        width: 400px;
+        font-size: 25px;
+        border-right: none;
+        padding-right: 25px;
+        border-radius: 1vmin;
+    }
+
+      &-react-icon {
+          font-size: 25px;
+          position: absolute;
+          right: 5px;
+      }
+  }
 
   .gallery {
     display: flex;
