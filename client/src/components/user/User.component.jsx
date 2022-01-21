@@ -11,7 +11,8 @@ export default function User({ user }) {
             <div className="header">Elliot Fu</div>
             <div className="meta">{`User ID: ${user._id}`}</div>
             <div className="description">
-              <div>{`cash=${user.cash}, credit=${user.credit}`}</div>
+              <div>{`cash: ${user.cash}$`}</div>
+              <div>{`credit: ${user.credit}$`}</div>
             </div>
           </div>
           <div className="ui two buttons">
