@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="Users-list">
-      <h1>All users</h1>
+      <p className="users-list-titles">All Users</p>
       <div className="gallery">
         { renderUsers() }
       </div>

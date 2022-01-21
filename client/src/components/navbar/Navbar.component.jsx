@@ -1,22 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
-    <div class="Navbar">
-      <div class="ui small menu">
-        <span class="active item">All Users</span>
-        <span class="item">Add User</span>
-        <div class="right menu">
-          <div class="ui dropdown item">
-            Language <i class="dropdown icon"></i>
-            <div class="menu">
-              <span class="item">English</span>
-              <span class="item">Russian</span>
-              <span class="item">Spanish</span>
+    <div className="Navbar">
+      <div className="ui small menu">
+        <Link to="/">
+          <span className="active item">All Users</span>
+        </Link>
+        <Link to="/add-user">
+          <span className="item">Add User</span> 
+        </Link>
+        <div className="right menu">
+          <div className="ui dropdown item">
+            Language <i className="dropdown icon"></i>
+            <div className="menu">
+              <span className="item">English</span>
+              <span className="item">Russian</span>
+              <span className="item">Spanish</span>
             </div>
           </div>
-          <div class="item">
-            <div class="ui primary button">Sign Up</div>
+          <div className="item">
+            <div className="ui primary button">Sign Up</div>
           </div>
         </div>
       </div>
