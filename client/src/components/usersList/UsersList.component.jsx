@@ -5,6 +5,7 @@ import './usersList.styles.scss';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [isUserChanged, setIsUserChanged] = useState(false);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -16,19 +17,23 @@ function App() {
       }
     }
     getUsers();
-  }, []);
+  }, [isUserChanged]);
 
   const renderUsers = () => {
     return users.map((user) => {
       return (
-        <User key={user._id} user={user}/>
+        <User 
+          key={user._id} 
+          user={user} 
+          isUserChanged={isUserChanged} 
+          setIsUserChanged={setIsUserChanged}
+        />
       );
     });
   }
 
   return (
     <div className="Users-list">
-      <p className="users-list-titles">All Users</p>
       <div className="gallery">
         { renderUsers() }
       </div>

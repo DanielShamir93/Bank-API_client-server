@@ -11,13 +11,15 @@ const makeDeposit = require("./controllers/makeDeposit");
 // { cash, credit } = req.body:
 router.route("/add").post(addUser);
 
-router.route("/all").get(getAllUsers).delete(deleteAllUsers);
+router.route("/all")
+  .get(getAllUsers)
+  .delete(deleteAllUsers);
 
 // Show details of user
 router.route("/:id").get(getUser);
 
 // Delete user
-router.route("/:id/delete").put(deleteUser);
+router.route("/:id/delete").delete(deleteUser);
 
 // Depositing
 // { amount } => req.body

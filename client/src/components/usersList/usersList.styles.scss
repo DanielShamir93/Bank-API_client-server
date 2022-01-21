@@ -1,18 +1,13 @@
 .Users-list {
   background: rgb(253, 190, 203);
   padding: 2vmin;
-  
-  .users-list-titles {
-    font-size: 50px;
-    text-align: center;
-  }
 
   .gallery {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     background: gray;
-    min-height: 75vh;
+    min-height: 90vh;
   }
 
 }
