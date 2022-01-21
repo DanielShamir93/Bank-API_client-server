@@ -9,7 +9,7 @@ export default function User({ user, isUserChanged, setIsUserChanged }) {
     try {
       console.log(`/${user._id}/delete`)
       await myApi.delete(`/${user._id}/delete`);
-      setIsUserChanged(!isUserChanged);
+      setIsUserChanged(!isUserChanged); 
     } catch (err) {
       console.log(err.message);
     }
