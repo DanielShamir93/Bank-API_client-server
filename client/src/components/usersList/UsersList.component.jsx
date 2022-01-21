@@ -7,6 +7,7 @@ import "./usersList.styles.scss";
 function App() {
   const [users, setUsers] = useState([]);
   const [isUserChanged, setIsUserChanged] = useState(false);
+  const [filterUsers, setFilterUsers] = useState("");
 
   useEffect(() => {
     const getUsers = async () => {
@@ -21,7 +22,13 @@ function App() {
   }, [isUserChanged]);
 
   const renderUsers = () => {
-    return users.map((user) => {
+    return users.filter((user) => {
+      const userFullName = user.firstName + " " + user.lastName;
+      return (
+        userFullName.toLowerCase().includes(filterUsers.toLowerCase()) ||
+        user._id.toLowerCase().includes(filterUsers.toLowerCase())
+      );
+    }).map((user) => {
       return (
         <User
           key={user._id}
@@ -40,6 +47,8 @@ function App() {
           className="search-account-input"
           type="text"
           placeholder="Search"
+          onChange={(e) => {setFilterUsers(e.target.value)}}
+          value={filterUsers}
         />
         <FcSearch className="search-account-react-icon" />
       </div>
