@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-const MONGODB_URL = "mongodb+srv://danielshamir93:4sXk3nH6OKl5tG35@danieldb.rhwdk.mongodb.net/Bank_API?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || 5000;
 
 mongoose.connect(
   MONGODB_URL,

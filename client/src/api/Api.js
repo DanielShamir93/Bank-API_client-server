@@ -1,10 +1,12 @@
 import axios from 'axios';
 
-let myUrl = 'http://localhost:5000/'; //development
+const PORT = process.env.PORT || 5000;
+let myUrl = `http://localhost:${PORT}/users`; //development
 
 if (process.env.NODE_ENV === 'production') {
-  myUrl = 'api';
+  myUrl = 'users';
 }
+
 export default axios.create({
   baseURL: myUrl,
 });
