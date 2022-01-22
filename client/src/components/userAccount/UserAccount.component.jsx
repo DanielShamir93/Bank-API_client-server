@@ -7,6 +7,9 @@ import "./userAccount.styles.scss";
 export default function UserAccount() {
   const [user, setUser] = useState({});
   const [deposit, setDeposit] = useState(0);
+  const [updateCredit, setUpdateCredit] = useState(0);
+  const [withdraw, setWithdraw] = useState(0);
+  const [isAccountChanged, setIsAccountChanged] = useState(false);
 
   useEffect(() => {
     const getUser = async () => {
@@ -22,13 +25,36 @@ export default function UserAccount() {
       }
     };
     getUser();
-  });
+  }, [isAccountChanged]);
 
   const makeDeposit = async () => {
     try {
       await myApi.put(`/${user._id}/deposit`, {
         amount: deposit
       });
+      setIsAccountChanged(!isAccountChanged);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  const updateUserCredit = async () => {
+    try {
+      await myApi.put(`/${user._id}/credit`, {
+        amount: updateCredit
+      });
+      setIsAccountChanged(!isAccountChanged);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  const toWithdraw = async () => {
+    try {
+      await myApi.put(`/${user._id}/withdraw`, {
+        amount: withdraw
+      });
+      setIsAccountChanged(!isAccountChanged);
     } catch (err) {
       console.log(err.message);
     }
@@ -67,18 +93,56 @@ export default function UserAccount() {
               />
             </div>
             <div className="ui left action input">
-              <button className="ui orange labeled icon button actions-button">
+              <button 
+                className="ui orange labeled icon button actions-button"
+                onClick={toWithdraw}
+              >
                 <i className="dollar sign icon"></i>
                 Withdraw
               </button>
-              <input type="text" />
+              <input 
+                type="text" 
+                onChange={(e) => {
+                  if (!isNaN(e.target.value)) {
+                    setWithdraw(e.target.value)
+                  }
+                }}
+                value={withdraw}
+              />
             </div>
             <div className="ui left action input">
-              <button className="ui yellow labeled icon button actions-button">
+              <button 
+                className="ui yellow labeled icon button actions-button"
+                onClick={updateUserCredit}
+              >
                 <i className="dollar sign icon"></i>
                 Update Credit
               </button>
-              <input type="text" />
+              <input 
+                type="text" 
+                onChange={(e) => {
+                  if (!isNaN(e.target.value)) {
+                    setUpdateCredit(e.target.value)
+                  }
+                }}
+                value={updateCredit}
+              />
+            </div>
+            <div className="ui left action input">
+              <button 
+                className="ui pink labeled icon button actions-button"
+                onClick={updateUserCredit}
+              >
+                <i className="dollar sign icon"></i>
+                Transfer
+              </button>
+              <input 
+                type="text" 
+              />
+              <input 
+                type="text" 
+                placeholder="User Id"
+              />
             </div>
           </div>
         </div>

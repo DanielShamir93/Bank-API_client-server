@@ -7,13 +7,10 @@ const makeDeposit = async (req, res) => {
       const { id } = req.params;
 
       if (+amount > 0) {
-        const prevData = await User.findById(id).select("cash");
-        const updatedCash = prevData.cash + +amount;
-        const updatedDoc = await User.findByIdAndUpdate(id, {
-          cash: updatedCash,
-        });
-
-        res.status(200).send(`user: ${id} updated.\ncash = ${updatedDoc.cash}`);
+        const doc = await User.findById(id).select("cash");
+        doc.cash += +amount;
+        doc.save();
+        res.status(200).send(`user: ${id} updated.\ncash = ${doc.cash}`);
       } else {
         res.status(200).send("Amount must be positive.");
       }
