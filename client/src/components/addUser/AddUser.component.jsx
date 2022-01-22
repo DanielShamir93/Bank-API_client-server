@@ -19,6 +19,10 @@ export default function AddUser() {
           cash,
           credit
         });
+        setFirstName("");
+        setLastName("");
+        setCash("");
+        setCredit("");
       } catch (err) {
         console.log(err.message);
       }
@@ -60,7 +64,7 @@ export default function AddUser() {
           type="text"
           name="cash"
           onChange={(e) => {
-            if (!isNaN(e.target.value && e.target.value !== "0")) {
+            if (!isNaN(e.target.value)) {
               setCash(e.target.value)
             }
           }}
@@ -73,7 +77,7 @@ export default function AddUser() {
           type="text"
           name="credit"
           onChange={(e) => {
-            if (!isNaN(e.target.value && e.target.value !== "0")) {
+            if (!isNaN(e.target.value)) {
               setCredit(e.target.value)
             }
           }}

@@ -8,6 +8,7 @@ const deleteAllUsers = require("./controllers/deleteAllUsers");
 const makeDeposit = require("./controllers/makeDeposit");
 const updateUserCredit = require("./controllers/updateUserCredit");
 const toWithdraw = require("./controllers/toWithdraw");
+const transferMoney = require("./controllers/transferMoney");
 
 // Add user
 // { cash, credit } = req.body:
@@ -34,5 +35,10 @@ router.route("/:id/credit").put(updateUserCredit);
 // Withdraw money
 // { amount } => req.body
 router.route("/:id/withdraw").put(toWithdraw);
+
+// Transfer money
+// { amount } => req.body
+// { destId } => req.query;
+router.route("/:id/transfer").put(transferMoney);
 
 module.exports = router;

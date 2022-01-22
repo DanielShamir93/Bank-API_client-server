@@ -10,12 +10,12 @@ const updateUserCredit = async (req, res) => {
         await User.findByIdAndUpdate(id, {
           credit: +amount,
         });
-        res.status(200).send(`user: ${id} updated.`);
+        res.status(200).send(`Credit set to ${amount}$.`);
       } else {
-        res.status(422).send("Credit amount must be positive.");
+        res.send("Credit must be positive.");
       }
     } else {
-      res.status(422).send("No credit amount was sent.");
+      res.send("No credit amount was sent.");
     }
   } catch (err) {
     res.status(404).send(err.message);

@@ -9,16 +9,16 @@ export default function UserAccount() {
   const [deposit, setDeposit] = useState(0);
   const [updateCredit, setUpdateCredit] = useState(0);
   const [withdraw, setWithdraw] = useState(0);
+  const [transferAmount, setTransferAmount] = useState(0);
+  const [transferToId, setTransferToId] = useState("");
   const [isAccountChanged, setIsAccountChanged] = useState(false);
+  const [serverMsg, setServerMsg] = useState("");
 
   useEffect(() => {
     const getUser = async () => {
       try {
         const uid = localStorage.getItem("uid");
         const { data } = await myApi.get(`/${uid}`);
-        if (!data) {
-          console.log("wow"); //TODO:
-        }
         setUser(data);
       } catch (err) {
         console.log(err.message);
@@ -32,7 +32,7 @@ export default function UserAccount() {
       const { data } = await myApi.put(`/${user._id}/deposit`, {
         amount: deposit
       });
-      console.log(data)
+      setServerMsg(data);
       setIsAccountChanged(!isAccountChanged);
     } catch (err) {
       console.log(err.message);
@@ -41,9 +41,10 @@ export default function UserAccount() {
 
   const updateUserCredit = async () => {
     try {
-      await myApi.put(`/${user._id}/credit`, {
+      const {data} = await myApi.put(`/${user._id}/credit`, {
         amount: updateCredit
       });
+      setServerMsg(data);
       setIsAccountChanged(!isAccountChanged);
     } catch (err) {
       console.log(err.message);
@@ -52,9 +53,26 @@ export default function UserAccount() {
 
   const toWithdraw = async () => {
     try {
-      await myApi.put(`/${user._id}/withdraw`, {
+      const { data } = await myApi.put(`/${user._id}/withdraw`, {
         amount: withdraw
       });
+      setServerMsg(data);
+      setIsAccountChanged(!isAccountChanged);
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
+
+  const transferMoney = async () => {
+    try {
+      const { data } = await myApi.put(`/${user._id}/transfer`, {
+        amount: transferAmount
+      }, {
+        params: {
+          destId: transferToId
+        }
+      });
+      setServerMsg(data);
       setIsAccountChanged(!isAccountChanged);
     } catch (err) {
       console.log(err.message);
@@ -77,7 +95,7 @@ export default function UserAccount() {
             </div>
             <fieldset className="server-message">
               <legend>Server Message</legend>
-              <p>fasdfsd</p>
+              <p>{serverMsg}</p>
             </fieldset>
           </fieldset>
           <div className="actions">
@@ -138,17 +156,25 @@ export default function UserAccount() {
             <div className="ui left action input">
               <button 
                 className="ui pink labeled icon button actions-button"
-                onClick={updateUserCredit}
+                onClick={transferMoney}
               >
                 <i className="dollar sign icon"></i>
                 Transfer
               </button>
               <input 
                 type="text" 
+                onChange={(e) => {
+                  if (!isNaN(e.target.value)) {
+                    setTransferAmount(e.target.value)
+                  }
+                }}
+                value={transferAmount}
               />
               <input 
-                type="text" 
-                placeholder="User Id"
+                type="text"
+                placeholder="Destination Id"
+                onChange={(e) => setTransferToId(e.target.value)}
+                value={transferToId}
               />
             </div>
           </div>

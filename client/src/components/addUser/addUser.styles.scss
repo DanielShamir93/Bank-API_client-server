@@ -3,10 +3,13 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #F7F8FB;
   height: 90vh;
+  
 
   div {
-    font-size: 18px;
+    
+    font-size: 20px;
     min-width: 30vw;
   }
 }
