@@ -60,7 +60,7 @@ export default function AddUser() {
           type="text"
           name="cash"
           onChange={(e) => {
-            if (!isNaN(e.target.value)) {
+            if (!isNaN(e.target.value && e.target.value !== "0")) {
               setCash(e.target.value)
             }
           }}
@@ -73,7 +73,7 @@ export default function AddUser() {
           type="text"
           name="credit"
           onChange={(e) => {
-            if (!isNaN(e.target.value)) {
+            if (!isNaN(e.target.value && e.target.value !== "0")) {
               setCredit(e.target.value)
             }
           }}

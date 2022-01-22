@@ -6,6 +6,7 @@ import "./userAccount.styles.scss";
 
 export default function UserAccount() {
   const [user, setUser] = useState({});
+  const [deposit, setDeposit] = useState(0);
 
   useEffect(() => {
     const getUser = async () => {
@@ -21,7 +22,17 @@ export default function UserAccount() {
       }
     };
     getUser();
-  }, []);
+  });
+
+  const makeDeposit = async () => {
+    try {
+      await myApi.put(`/${user._id}/deposit`, {
+        amount: deposit
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  }
 
   return (
     <div className="User-account">
@@ -38,11 +49,22 @@ export default function UserAccount() {
           </fieldset>
           <div className="actions">
             <div className="ui left action input">
-              <button className="ui teal labeled icon button actions-button">
+              <button 
+                className="ui teal labeled icon button actions-button"
+                onClick={makeDeposit}
+              >
                 <i className="dollar sign icon"></i>
                 Deposit
               </button>
-              <input type="text" />
+              <input 
+                type="text"
+                onChange={(e) => {
+                  if (!isNaN(e.target.value)) {
+                    setDeposit(e.target.value)
+                  }
+                }}
+                value={deposit}
+              />
             </div>
             <div className="ui left action input">
               <button className="ui orange labeled icon button actions-button">
