@@ -10,9 +10,9 @@ const makeDeposit = async (req, res) => {
         const doc = await User.findById(id).select("cash");
         doc.cash += +amount;
         doc.save();
-        res.status(200).send(`user: ${id} updated.\ncash = ${doc.cash}`);
+        res.status(200).send(`user: ${id} updated.`);
       } else {
-        res.status(200).send("Amount must be positive.");
+        res.send("Amount must be positive.");
       }
     }
   } catch (err) {

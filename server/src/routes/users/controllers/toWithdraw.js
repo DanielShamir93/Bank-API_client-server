@@ -22,15 +22,13 @@ const toWithdraw = async (req, res) => {
           doc.save();
           res.status(200).send(`user: ${id} updated.`);
         } else {
-          res.send(
-            `User does not have enough money in the bank to withdraw ${amount}$.\nAccount status: cash: ${doc.cash}$, credit: ${doc.credit}$`
-          );
+          res.status(422).send(`User does not have enough money.`);
         }
       } else {
-        res.send("Withdraw amount must be positive.");
+        res.status(422).send("Withdraw amount must be positive.");
       }
     } else {
-      res.send("No amount was sent.");
+      res.status(422).send("No amount was sent.");
     }
   } catch (err) {
     res.status(404).send(err.message);

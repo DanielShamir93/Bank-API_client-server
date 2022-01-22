@@ -29,9 +29,10 @@ export default function UserAccount() {
 
   const makeDeposit = async () => {
     try {
-      await myApi.put(`/${user._id}/deposit`, {
+      const { data } = await myApi.put(`/${user._id}/deposit`, {
         amount: deposit
       });
+      console.log(data)
       setIsAccountChanged(!isAccountChanged);
     } catch (err) {
       console.log(err.message);
@@ -70,8 +71,14 @@ export default function UserAccount() {
           </div>
           <fieldset className="status">
             <legend>Status</legend>
-            <div>{`Cash: ${user.cash}$`}</div>
-            <div>{`Credit: ${user.credit}$`}</div>
+            <div className="status-user">
+              <div>{`Cash: ${user.cash}$`}</div>
+              <div>{`Credit: ${user.credit}$`}</div>
+            </div>
+            <fieldset className="server-message">
+              <legend>Server Message</legend>
+              <p>fasdfsd</p>
+            </fieldset>
           </fieldset>
           <div className="actions">
             <div className="ui left action input">
