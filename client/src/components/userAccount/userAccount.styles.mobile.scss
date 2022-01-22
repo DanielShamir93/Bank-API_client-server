@@ -1,0 +1,36 @@
+@media (max-width: 800px) {
+  .User-account {
+  
+    .card {
+  
+      .content {
+        align-items: center;
+  
+        .status {
+          &-user {
+            width: 80vw;
+          }
+  
+          .server-message {
+            display: none;
+          }
+        }
+  
+        .actions {
+          font-size: 15px;
+          height: 230px;
+      
+          input {
+            width: 15vw;
+          }
+  
+          &-button {
+            font-size: 18px;
+            width: 250px;
+          }
+        }
+      }
+    }
+  }
+
+}

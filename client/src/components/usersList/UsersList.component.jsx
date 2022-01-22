@@ -14,7 +14,7 @@ function App() {
       try {
         const { data } = await myApi.get("/all");
         setUsers(data);
-        localStorage.removeItem('uid');
+        localStorage.removeItem("uid");
       } catch (err) {
         console.log(err.message);
       }
@@ -23,22 +23,24 @@ function App() {
   }, [isUserChanged]);
 
   const renderUsers = () => {
-    return users.filter((user) => {
-      const userFullName = user.firstName + " " + user.lastName;
-      return (
-        userFullName.toLowerCase().includes(filterUsers.toLowerCase()) ||
-        user._id.toLowerCase().includes(filterUsers.toLowerCase())
-      );
-    }).map((user) => {
-      return (
-        <User
-          key={user._id}
-          user={user}
-          isUserChanged={isUserChanged}
-          setIsUserChanged={setIsUserChanged}
-        />
-      );
-    });
+    return users
+      .filter((user) => {
+        const userFullName = user.firstName + " " + user.lastName;
+        return (
+          userFullName.toLowerCase().includes(filterUsers.toLowerCase()) ||
+          user._id.toLowerCase().includes(filterUsers.toLowerCase())
+        );
+      })
+      .map((user) => {
+        return (
+          <User
+            key={user._id}
+            user={user}
+            isUserChanged={isUserChanged}
+            setIsUserChanged={setIsUserChanged}
+          />
+        );
+      });
   };
 
   return (
@@ -48,7 +50,9 @@ function App() {
           className="search-account-input"
           type="text"
           placeholder="Search"
-          onChange={(e) => {setFilterUsers(e.target.value)}}
+          onChange={(e) => {
+            setFilterUsers(e.target.value);
+          }}
           value={filterUsers}
         />
         <FcSearch className="search-account-react-icon" />

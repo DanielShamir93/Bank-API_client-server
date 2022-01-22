@@ -3,6 +3,7 @@ import { BsFillReplyAllFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import myApi from "../../api/Api";
 import "./userAccount.styles.scss";
+import "./userAccount.styles.mobile.scss";
 
 export default function UserAccount() {
   const [user, setUser] = useState({});

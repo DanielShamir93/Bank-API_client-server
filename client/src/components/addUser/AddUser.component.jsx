@@ -1,8 +1,8 @@
 import React from "react";
 import "./addUser.styles.scss";
-import { useState } from "react";
-import validator from 'validator';
-import myApi from '../../api/Api';
+import { useState, useEffect } from "react";
+import validator from "validator";
+import myApi from "../../api/Api";
 
 export default function AddUser() {
   const [firstName, setFirstName] = useState("");
@@ -10,14 +10,18 @@ export default function AddUser() {
   const [cash, setCash] = useState("");
   const [credit, setCredit] = useState("");
 
+  useEffect(() => {
+    
+  });
+
   const setNewUser = async () => {
     if (isValidInput()) {
       try {
-        await myApi.post('/add', {
+        await myApi.post("/add", {
           firstName,
           lastName,
           cash,
-          credit
+          credit,
         });
         setFirstName("");
         setLastName("");
@@ -27,7 +31,7 @@ export default function AddUser() {
         console.log(err.message);
       }
     }
-  }
+  };
 
   const isValidInput = () => {
     return (
@@ -35,37 +39,41 @@ export default function AddUser() {
       validator.isAlpha(lastName) &&
       validator.isNumeric(cash) &&
       validator.isNumeric(credit)
-    ) 
-  }
+    );
+  };
 
   return (
     <form className="ui form">
       <div className="field">
         <label>First Name</label>
-        <input 
+        <input
           type="text"
           name="first-name"
-          onChange={(e) => {setFirstName(e.target.value)}}
+          onChange={(e) => {
+            setFirstName(e.target.value);
+          }}
           value={firstName}
         />
       </div>
       <div className="field">
         <label>Last Name</label>
-        <input 
+        <input
           type="text"
           name="last-name"
-          onChange={(e) => {setLastName(e.target.value)}}
+          onChange={(e) => {
+            setLastName(e.target.value);
+          }}
           value={lastName}
         />
       </div>
       <div className="field">
         <label>Cash</label>
-        <input 
+        <input
           type="text"
           name="cash"
           onChange={(e) => {
             if (!isNaN(e.target.value)) {
-              setCash(e.target.value)
+              setCash(e.target.value);
             }
           }}
           value={cash}
@@ -73,22 +81,18 @@ export default function AddUser() {
       </div>
       <div className="field">
         <label>Credit</label>
-        <input 
+        <input
           type="text"
           name="credit"
           onChange={(e) => {
             if (!isNaN(e.target.value)) {
-              setCredit(e.target.value)
+              setCredit(e.target.value);
             }
           }}
           value={credit}
         />
       </div>
-      <button 
-        className="ui button" 
-        type="button"
-        onClick={setNewUser}
-      >
+      <button className="ui button big" type="button" onClick={setNewUser}>
         Submit
       </button>
     </form>

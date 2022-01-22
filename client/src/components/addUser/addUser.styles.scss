@@ -4,12 +4,11 @@ form {
   justify-content: center;
   align-items: center;
   background: #F7F8FB;
-  height: 90vh;
-  
+  height: 100vh;
+  padding-top: 100px;  
 
-  div {
-    
-    font-size: 20px;
-    min-width: 30vw;
+  .field {
+    font-size: 25px;
+    min-width: 300px;
   }
 }

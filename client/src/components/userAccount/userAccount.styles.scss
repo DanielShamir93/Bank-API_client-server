@@ -1,15 +1,16 @@
 .User-account {
-  min-height: 90vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #F7F8FB;
+  padding-top: 60px;
 
   .card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid gray;
     border-radius: 20px;
     padding: 20px;
 
