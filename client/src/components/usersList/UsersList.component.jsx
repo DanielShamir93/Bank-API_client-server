@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FcPlus, FcSearch } from "react-icons/fc";
+import { FcSearch } from "react-icons/fc";
 import myApi from "../../api/Api";
 import User from "../user/User.component";
 import "./usersList.styles.scss";
@@ -14,6 +14,7 @@ function App() {
       try {
         const { data } = await myApi.get("/all");
         setUsers(data);
+        localStorage.removeItem('uid');
       } catch (err) {
         console.log(err.message);
       }
